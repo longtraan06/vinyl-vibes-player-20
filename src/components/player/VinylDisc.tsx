@@ -8,38 +8,37 @@ interface VinylDiscProps {
 }
 
 const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
-  const radius = 140;
+  const radius = 46;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
     <div className="relative flex items-center justify-center">
       {/* Progress Ring Container */}
-      <div className="relative">
+      <div className="relative w-[65vw] h-[65vw] max-w-[700px] max-h-[700px] md:w-[60vw] md:h-[60vw] lg:w-[55vw] lg:h-[55vw]">
         {/* SVG Progress Ring */}
         <svg
-          className="absolute inset-0 -rotate-90"
-          width="320"
-          height="320"
-          viewBox="0 0 320 320"
+          className="absolute inset-0 -rotate-90 w-full h-full"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid meet"
         >
           {/* Background track */}
           <circle
-            cx="160"
-            cy="160"
+            cx="50"
+            cy="50"
             r={radius}
             fill="none"
             stroke="hsl(var(--progress-track))"
-            strokeWidth="6"
+            strokeWidth="1.5"
           />
           {/* Progress arc */}
           <circle
-            cx="160"
-            cy="160"
+            cx="50"
+            cy="50"
             r={radius}
             fill="none"
             stroke="hsl(var(--progress))"
-            strokeWidth="6"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
@@ -47,9 +46,9 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
           />
           {/* Progress indicator dot */}
           <circle
-            cx={160 + radius * Math.cos((progress / 100) * 2 * Math.PI - Math.PI / 2)}
-            cy={160 + radius * Math.sin((progress / 100) * 2 * Math.PI - Math.PI / 2)}
-            r="8"
+            cx={50 + radius * Math.cos((progress / 100) * 2 * Math.PI - Math.PI / 2)}
+            cy={50 + radius * Math.sin((progress / 100) * 2 * Math.PI - Math.PI / 2)}
+            r="2"
             fill="hsl(var(--progress))"
             className="transition-all duration-300"
           />
@@ -57,10 +56,9 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
 
         {/* Vinyl Disc */}
         <div
-          className={`w-[280px] h-[280px] rounded-full overflow-hidden ${
+          className={`absolute inset-[8%] rounded-full overflow-hidden ${
             isPlaying ? "animate-spin-slow" : ""
           }`}
-          style={{ margin: "20px" }}
         >
           <img
             src={cdDiscImage}
@@ -72,12 +70,12 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
         {/* Center Play Button */}
         <button
           onClick={onTogglePlay}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-card flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full bg-card flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
         >
           {isPlaying ? (
-            <Pause className="w-8 h-8 text-foreground" fill="currentColor" />
+            <Pause className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-foreground" fill="currentColor" />
           ) : (
-            <Play className="w-8 h-8 text-foreground ml-1" fill="currentColor" />
+            <Play className="w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-foreground ml-1" fill="currentColor" />
           )}
         </button>
       </div>
