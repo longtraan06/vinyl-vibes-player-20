@@ -8,7 +8,7 @@ interface VinylDiscProps {
 }
 
 const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
-  const radius = 46;
+  const radius = 48;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
@@ -29,7 +29,7 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
             r={radius}
             fill="none"
             stroke="hsl(var(--progress-track))"
-            strokeWidth="1.5"
+            strokeWidth="1"
           />
           {/* Progress arc */}
           <circle
@@ -38,7 +38,7 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
             r={radius}
             fill="none"
             stroke="hsl(var(--progress))"
-            strokeWidth="1.5"
+            strokeWidth="1"
             strokeLinecap="round"
             strokeDasharray={circumference}
             strokeDashoffset={strokeDashoffset}
@@ -48,7 +48,7 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
           <circle
             cx={50 + radius * Math.cos((progress / 100) * 2 * Math.PI - Math.PI / 2)}
             cy={50 + radius * Math.sin((progress / 100) * 2 * Math.PI - Math.PI / 2)}
-            r="2"
+            r="1.5"
             fill="hsl(var(--progress))"
             className="transition-all duration-300"
           />
