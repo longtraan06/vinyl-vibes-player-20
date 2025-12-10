@@ -15,7 +15,7 @@ const VinylDisc = ({ isPlaying, progress, onTogglePlay }: VinylDiscProps) => {
   return (
     <div className="relative flex items-center justify-center">
       {/* Progress Ring Container */}
-      <div className="relative w-[65vw] h-[65vw] max-w-[700px] max-h-[700px] md:w-[60vw] md:h-[60vw] lg:w-[55vw] lg:h-[55vw]">
+      <div className="relative w-[80vw] h-[80vw] max-w-[850px] max-h-[850px] md:w-[75vw] md:h-[75vw] lg:w-[70vw] lg:h-[70vw]">
         {/* SVG Progress Ring */}
         <svg
           className="absolute inset-0 -rotate-90 w-full h-full"
