@@ -21,13 +21,13 @@ const Index = () => {
   } = useAudioPlayer(demoTracks);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Header activeTab={activeTab} onTabChange={setActiveTab} />
       
-      <main className="px-6 py-8 md:px-12 lg:px-16">
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 lg:gap-16">
-          {/* Left Side - Vinyl Disc */}
-          <div className="flex-shrink-0">
+      <main className="relative">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start">
+          {/* Left Side - Vinyl Disc (partially hidden on left) */}
+          <div className="relative lg:fixed lg:left-0 lg:top-1/2 lg:-translate-y-1/2 lg:-translate-x-[30%]">
             <VinylDisc
               isPlaying={isPlaying}
               progress={progress}
@@ -36,7 +36,7 @@ const Index = () => {
           </div>
 
           {/* Right Side - Song Info & Queue */}
-          <div className="flex-1 w-full max-w-xl">
+          <div className="w-full lg:ml-auto lg:w-[45%] lg:pr-12 px-6 py-8 lg:py-16">
             <SongInfo
               title={currentTrack.title}
               artist={currentTrack.artist}
